@@ -44,7 +44,7 @@ namespace VidlyApp
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddAutoMapper(typeof(Startup));
-
+            services.AddSingleton<MappingProfile>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

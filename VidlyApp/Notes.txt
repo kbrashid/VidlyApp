@@ -1,0 +1,90 @@
+﻿ CreateMap<Customer, CustomerDto>().ForMember(m => m.Id, opt => opt.Ignore()); 
+ CreateMap<CustomerDto, Customer>();
+ CreateMap<Movie, MovieDto>().ForMember(m => m.Id, opt => opt.Ignore());
+ CreateMap<MovieDto, Movie>();
+
+ In Start.Cs file:
+  services.AddDbContext<VidlyContext>();
+  services.AddAutoMapper(typeof(Startup));
+
+  for this add dll 
+  AutoMapper.Data (4.1.0)
+  AutoMapperExtensions.MicrosoftDependencyInjection(7.0.0)
+
+  For new dialogbox need to install - packge bootbox -version: 4.3.0
+  but it has a conflict, so I install version 4.2.0
+  this is instal at c:\kbr\.nuget\bootbox\ ... from here copy .js files to 
+  wwwroot\lib\bootbox\dist\
+
+  <environment include="Development">
+        ... ...
+        <script src="~/lib/bootbox/dist/bootbox.js"></script>
+       ... ...
+    </environment>
+
+  need here ???? bootbox.min.js like the following .........
+  <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+
+Install-package jquery-datatables -version:1:10.11 but I installed 1.10.15
+
+//for Scripts -----
+ <environment include="Development">
+        ... ...
+        <script src="~/lib/bootbox/dist/bootbox.js"></script>
+        <script src="~/lib/DataTables/Scripts/DataTables/jquery.dataTables.js"></script>
+        <script src="~/lib/DataTables/Scripts/DataTables/dataTables.bootstrap.js"></script>
+       ... ...
+    </environment>
+
+	// for CSS -------
+	 <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/lib/DataTables/Content/DataTables/css/dataTables.bootstrap.css" />
+    </environment>
+
+	Modify Index.cshtml to take data from API call ----
+
+
+	---------------------------
+
+Add ASP.NET Core Identity to Existing Project
+To add ASP.NET Core Identity to the existing project, right-click on the project. 
+Add > New Scaffolded Item. from the opened window, 
+select Identity from the left panel and click on Add. 
+It’ll open up another window as shown below.
+
+Click on + sign to add Datacontext class as Projext.Data.AythDbContext then click on Add button
+similarly to add User class as ApplicationUser
+
+
+showing how to customize asp.net core identity
+
+A ScaffoldingReadme.txt file is added to projext
+
+Configuration of the Identity related services can be found in the Areas/Identity/IdentityHostingStartup.cs file.
+
+If your app was previously configured to use Identity, then you should remove the call to the AddIdentity method from your ConfigureServices method.
+
+The generated UI requires support for static files. To add static files to your app:
+1. Call app.UseStaticFiles() from your Configure method
+
+To use ASP.NET Core Identity you also need to enable authentication. To authentication to your app:
+1. Call app.UseAuthentication() from your Configure method (after static files)
+
+The generated UI requires MVC. To add MVC to your app:
+1. Call services.AddMvc() from your ConfigureServices method
+2. Call app.UseMvc() from your Configure method (after authentication)
+
+The generated database code requires Entity Framework Core Migrations. Run the following commands:
+1. dotnet ef migrations add CreateIdentitySchema
+2. dotnet ef database update
+ Or from the Visual Studio Package Manager Console:
+1. Add-Migration CreateIdentitySchema
+2. Update-Database
+
+Apps that use ASP.NET Core Identity should also use HTTPS. To enable HTTPS see https://go.microsoft.com/fwlink/?linkid=848054.
+
+	
