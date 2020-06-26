@@ -1,0 +1,42 @@
+﻿@model IEnumerable<VidlyApp.Models.Movie>
+
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+<p>
+    @Html.ActionLink("New Movie", "New", "Movies", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (!Model.Any())
+{
+    <p>We don't have any movie yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Movie</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    @*<td>@movie.Name</td>*@
+
+                    <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)</td>
+
+                    @*<img alt="Edit" src="@Url.Content("https://cdn4.iconfinder.com/data/icons/simplicio/128x128/file_edit.png")" width="15" style="horiz-align:left "> </a>*@
+                    @*<td>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id },null)<img src="@Url.Content("https://cdn4.iconfinder.com/data/icons/simplicio/128x128/file_edit.png")" width="15" style="align-items:flex-start"></td>*@
+
+                    <td>@movie.Genre.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
