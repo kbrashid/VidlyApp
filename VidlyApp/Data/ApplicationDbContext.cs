@@ -27,6 +27,7 @@ namespace VidlyApp.Data
             //optionsBuilder.UseSqlServer(
             //    @"Server=(localdb)\mssqllocaldb;Database=aspnet-VidlyApp-216AB9AB-A11E-45DF-AFA6-15E7B7FBD2D9;Integrated Security=True");
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=VidlyDb;Integrated Security=True");
+
         }
     }
 }
